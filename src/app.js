@@ -9,12 +9,12 @@ const port = 3000;
 
 
 app.get("/musicians", async (req, res) => {
-    // Retrieve all musicians from the database
-    const musicians = await Musician.findAll();
-  
-    // Send the musicians as a JSON response
-    res.json(musicians);
-  });
+  // Retrieve all musicians from the database
+  const musicians = await Musician.findAll();
+
+  // Send the musicians as a JSON response
+  res.json(musicians);
+});
 
 
 
