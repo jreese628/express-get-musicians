@@ -13,7 +13,9 @@ describe("./musicians endpoint", () => {
   // Write your tests here
   test("Testing Musicians endpoint", async () => {
     // Sends request to `/Musicians` endpoint
-    const response = await request(app).get("/musician");
-    
-})
+    const response = await request(app).get("/musicians");
+    expect(response.statusCode).toBe(200);
+  });
+
+
 });
