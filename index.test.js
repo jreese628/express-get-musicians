@@ -14,6 +14,8 @@ describe("./musicians endpoint", () => {
   test("Testing Musicians endpoint", async () => {
     // Sends request to `/Musicians` endpoint
     const response = await request(app).get("/musicians");
+    const responseData = JSON.parse(response.text);
+    console.log(responseData)
     expect(response.statusCode).toBe(200);
   });
 
