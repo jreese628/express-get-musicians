@@ -15,37 +15,29 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/musicians", async (req, res) => {
   // Retrieve all musicians from the database
   const musicians = await Musician.findAll();
-
-  // Send the musicians as a JSON response
   res.json(musicians);
 });
 
 app.get("/musicians/:id", async (req, res) => {
   // Retrieve all musicians from the database
-  let id = req.params.id
-  let retMusician = await Musician.findByPk(id)
-  res.json(retMusician)
+  let getMusician = await Musician.findByPk(req.params.id)
+  res.json(getMusician)
 });
 
 app.post("/musicians", async (req, res) => {
-  const newMusician = req.body;
-  const createdMusician = await Musician.create(newMusician);
-  res.json(createdMusician)
+  const musician = await Musician.create(req.body);
+  res.json(musician)
 });
 
 app.put("/musicians/:id", async (req, res) => {
-  const id = req.params.id
   const updatedMusiciansData = req.body;
-
-  const musicians = await Musician.findByPk(id);
+  const musicians = await Musician.findByPk(req.params.id);
   const updatedMusicians = await musicians.update(updatedMusiciansData);
   res.json(updatedMusicians);
 });
 
 app.delete("/musicians/:id", async (req, res) => {
-  const id = req.params.id;
-
-  const musicians = await Musician.findByPk(id);
+  const musicians = await Musician.findByPk(req.params.id);
   await musicians.destroy();
   res.status(200).send()
 });

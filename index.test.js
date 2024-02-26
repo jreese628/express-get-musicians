@@ -15,11 +15,11 @@ describe("./musicians endpoint", () => {
     // Sends request to `/Musicians` endpoint
     const response = await request(app).get("/musicians");
     const responseData = JSON.parse(response.text);
-    console.log(responseData)
+    console.log(responseData);
     expect(response.statusCode).toBe(200);
   });
 
-
-  
-
+  test("Testing /musicians/:id endpoint", async () => {
+    
+  });
 });
